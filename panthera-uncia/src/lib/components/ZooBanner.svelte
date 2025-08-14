@@ -22,7 +22,7 @@
     }
 
     #zoo_linkBanner {
-        background-color: rgb(29, 65, 29);
+        background-color: #434783;
         padding: 10px;
         text-align: center;
         vertical-align: center;
