@@ -26,20 +26,20 @@
         padding: 10px;
         text-align: center;
         vertical-align: center;
-        position: fixed; /* Esto hace que se quede arriba al hacer scroll */
+        position: fixed;
         left: 0;
         right: 0;
         top: 0;
-        height: 65px; /* Asegura un alto fijo para el banner */
-        z-index: 1000; /* Asegura que esté por encima de otros elementos */
+        height: 65px; 
+        z-index: 1000;
         font-size: 15px;
         transition: box-shadow 0.3s ease-in-out;
-        font-family: 'Phantom Sans', sans-serif; /* Usamos comillas por el espacio */
+        font-family: 'Phantom Sans', sans-serif; 
         text-decoration: none;
         color: white;
-        display: flex; /* Para centrar el h1 verticalmente si lo deseas */
-        align-items: center; /* Centra verticalmente */
-        justify-content: center; /* Centra horizontalmente el contenido */
+        display: flex; 
+        align-items: center;
+        justify-content: center; 
     }
     #zoo_linkBanner:hover {
         cursor: pointer;
