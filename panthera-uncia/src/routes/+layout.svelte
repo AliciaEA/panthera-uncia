@@ -3,6 +3,16 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 
+    // Attribution from Vecteezy
+    const attribution = {
+            mountains: {
+                url: 'https://www.vecteezy.com/free-vector/abstract'
+            },
+            panthera: {
+                url: 'https://www.vecteezy.com/free-vector/mascot'
+            }
+        };
+
 	let { children } = $props();
 </script>
 
@@ -10,26 +20,28 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
+<!-- Requirement: Add The ZooBanner component -->
 <ZooBanner />
 <div style="height: 65px;"></div>
 
+<!-- My Main content area I Guess -->
 <main class="flex-grow">
     {@render children()} 
 </main>
 
+<!-- Footer (have to make it prettier) -->
 <footer class="bg-gray-900 text-gray-400 text-center py-4 text-xs">
     <p>
-        Mountain vector by <a href="https://es.vecteezy.com/vectores-gratis/mountain" target="_blank" rel="noopener noreferrer" class="hover:underline text-blue-300">NombreDelAutor1</a> on <a href="https://www.vecteezy.com" target="_blank" rel="noopener noreferrer" class="hover:underline text-blue-300">Vecteezy</a>.
+        Mountain vector <a href={attribution.mountains.url} target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: #90cdf4;">on Vecteezy</a><br>
+
+        Panthera Uncia vector <a href={attribution.panthera.url} target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: #90cdf4;">on Vecteezy</a> .
     </p>
     <p class="mt-2">
-        © {new Date().getFullYear()} Tu Nombre/Proyecto. Todos los derechos reservados.
+        © {new Date().getFullYear()} Panthera-Uncia. Todos los derechos reservados.
     </p>
 </footer>
 
-<style lang="postcss">
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+<style >
 
     html, body {
         height: 100%;
@@ -38,8 +50,6 @@
     body {
         display: flex;
         flex-direction: column;
-        min-height: 100vh; /* Ensure body takes full viewport height for flex-grow to work */
+        min-height: 100vh; 
     }
 </style>
-
-{@render children?.()}
