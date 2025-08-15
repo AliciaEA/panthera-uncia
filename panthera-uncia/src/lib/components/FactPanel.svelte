@@ -103,7 +103,7 @@
 
     {#if allFactsViewed}
         <div class="interactive-button-wrapper">
-            <a href="/interactive" class="interactive-button">
+            <a href="/meetup" class="interactive-button">
                 <img src="src/lib/assets/planet.png" alt="Little planet" class="planet-icon" />
                 Meet with Panthera Uncia!
             </a>
