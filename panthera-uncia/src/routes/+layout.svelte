@@ -3,16 +3,6 @@
     import "../app.css";
     import favicon from "$lib/assets/favicon.svg";
 
-    // Attribution from Vecteezy
-    const attribution = {
-        mountains: {
-            url: "https://www.vecteezy.com/free-vector/abstract",
-        },
-        panthera: {
-            url: "https://www.vecteezy.com/free-vector/mascot",
-        },
-    };
-
     let { children } = $props();
 </script>
 
@@ -31,28 +21,104 @@
 
 <!-- Footer (have to make it prettier) -->
 <footer class="site-footer">
-    
-    <div class="footer-content">
-        <p>
-            Mountain vector <a
-                href={attribution.mountains.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style="text-decoration: underline; color: #90cdf4;"
-                >on Vecteezy</a
-            ><br />
-            Panthera Uncia vector
-            <a
-                href={attribution.panthera.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style="text-decoration: underline; color: #90cdf4;"
-                >on Vecteezy</a
-            > .
-        </p>
-        <p class="mt-2">
-            © {new Date().getFullYear()} Panthera-Uncia. Todos los derechos reservados.
-        </p>
+    <div class="footer-columns">
+        <div class="footer-col footer-brand">
+            <div class="footer-icons">
+                <!-- PNG ICONS: replace src with your PNGs in static/ -->
+                <a href="https://zoo.hackclub.com/" title="The Zoo">
+                    <img
+                        src="/src/lib/assets/the-zoo-logo.png"
+                        alt="The Zoo"
+                        class="footer-icon"
+                    />
+                </a>
+                <a
+                    href="https://hackclub.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Hackclub"
+                >
+                    <img
+                        src="/src/lib/assets/hackclub-footer.png"
+                        alt="Hackclub"
+                        class="footer-icon"
+                    />
+                </a>
+            </div>
+        </div>
+        <div class="footer-col footer-links">
+            <div class="footer-section-title">Vectors & Credits</div>
+            <div class="footer-credits-grid">
+                <ul>
+                    <li>
+                        Mountain: <a
+                            href="https://www.vecteezy.com/free-vector/abstract"
+                            target="_blank">Vecteezy</a
+                        >
+                    </li>
+                    <li>
+                        Panthera Uncia: <a
+                            href="https://www.vecteezy.com/free-vector/mascot"
+                            target="_blank">Vecteezy</a
+                        >
+                    </li>
+                    <li>
+                        Paws: <a
+                            href="https://www.vecteezy.com/free-vector/paw"
+                            target="_blank">Vecteezy</a
+                        >
+                    </li>
+                    <li>
+                        Snow Leopard: <a
+                            href="https://www.vecteezy.com/free-png/snow-leopard"
+                            target="_blank">Vecteezy</a
+                        >
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        Chibi Panthera Uncia: <a
+                            href="https://www.vecteezy.com/png/35632094-ai-generated-snow-leopard-dressed-in-a-cozy-long-sleeved-sweater-decorated-with-stars"
+                            target="_blank">Vecteezy</a
+                        >
+                    </li>
+                    <li>
+                        Pine Trees Silhouette: <a
+                            href="https://www.vecteezy.com/free-png/pine-trees-silhouette"
+                            target="_blank">Vecteezy</a
+                        >
+                    </li>
+                    <li>
+                        Earth: <a
+                            href="https://www.vecteezy.com/free-png/earth"
+                            target="_blank">Vecteezy</a
+                        >
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-col footer-contact">
+            <div class="footer-section-title">Contact</div>
+
+            <div class="footer-contact-info">
+                <a
+                    href="https://github.com/AliciaEA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="GitHub"
+                    id="github-icon"
+                >
+                    <img
+                        src="/src/lib/assets/github-logo.png"
+                        alt="GitHub"
+                        class="footer-icon"
+                    />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © {new Date().getFullYear()} Panthera-Uncia. Todos los derechos reservados.
     </div>
 </footer>
 
@@ -60,34 +126,152 @@
     .site-footer {
         position: relative;
         width: 100%;
-        min-height: 180px;
-        background: #000000;
-        color: #bbb;
+        background: #000;
+        color: #e0e0e0;
         overflow: hidden;
-        padding-top: 0;
+        padding: 0;
         margin-top: 0;
+        font-size: 0.89rem;
+        border-top: 2px solid #222;
     }
-    
-    .footer-content {
-        position: relative;
-        z-index: 0;
-        padding: 2.5rem 1rem 1.5rem 1rem;
-        text-align: center;
-        font-size: 0.95rem;
+    .footer-credits-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+        width: 100%;
     }
-    .footer-content a {
-        color: #90cdf4;
+    .footer-credits-grid ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+        font-size: 0.87rem;
+    }
+    .footer-credits-grid li {
+        margin-bottom: 0.45rem;
+        line-height: 1.3;
+    }
+    .footer-columns {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 2vw;
+        padding: 14vw 4vw 8vw 4vw;
+        flex-wrap: wrap;
+    }
+    @media (max-width: 900px) {
+        .footer-columns {
+            flex-direction: column;
+            gap: 4vw;
+            padding: 7vw 2vw 2vw 2vw;
+        }
+        .footer-col {
+            min-width: 0;
+            width: 100%;
+            margin-bottom: 4vw;
+        }
+        .footer-brand {
+            align-items: center;
+            margin-bottom: 2vw;
+        }
+        .footer-credits-grid {
+            grid-template-columns: 1fr;
+            gap: 2vw;
+        }
+        .footer-section-title {
+            text-align: center;
+        }
+    }
+    .footer-col {
+        flex: 1 1 220px;
+        min-width: 180px;
+        margin-bottom: 1.5vw;
+    }
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+    }
+    .footer-icons {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    .footer-icon {
+        width: 150px;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 6px #222a);
+
+        padding: 4px;
+        transition: box-shadow 0.2s;
+    }
+
+    #github-icon {
+        background-color: #fff;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        box-shadow: 0 2px 8px #2222;
+        transition: background-color 0.2s;
+    }
+    #github-icon img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+
+    .footer-links ul {
+        list-style: none;
+        color: rgb(194, 203, 216);
+        padding: 0;
+        margin: 0.5rem 0 0 0;
+    }
+    .footer-links li {
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+    }
+    .footer-section-title {
+        font-weight: bold;
+        color: #455880;
+        margin-bottom: 0.5rem;
+        font-size: 1.05rem;
+    }
+   
+
+    .footer-links a,
+    .footer-contact a {
+        color: #7a8891;
         text-decoration: underline;
+        transition: color 0.2s;
     }
-    .footer-content .mt-2 {
-        margin-top: 1rem;
-        font-size: 0.85rem;
+
+    .footer-links a:hover,
+    .footer-contact a:hover {
+        color: #fff;
     }
-    @media (max-width: 600px) {
-        
-        .footer-content {
-            padding: 1.5rem 0.5rem 1rem 0.5rem;
-            font-size: 0.85rem;
+    .footer-bottom {
+        text-align: center;
+        font-size: 0.92rem;
+        color: #888;
+        padding: 1vw 0 1vw 0;
+        border-top: 1px solid #222;
+        background: #000000;
+    }
+    @media (max-width: 900px) {
+        .footer-columns {
+            flex-direction: column;
+            gap: 2vw;
+            padding: 14vw 2vw 2vw 2vw;
+        }
+        .footer-col {
+            margin-bottom: 2vw;
         }
     }
 </style>
