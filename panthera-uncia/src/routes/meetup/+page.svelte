@@ -1,5 +1,6 @@
 <script>
     import Snow from "$lib/components/snow.svelte";
+    import { effect } from "svelte";
     let snowPileClicked = false;
     let dialogueClickedIndex = 0;
     let dialogueNotClickedIndex = 0;
@@ -52,6 +53,15 @@
             cubDialogue = dialoguesNotClicked[dialogueNotClickedIndex];
         }
     }
+
+    // Rune effect: ejemplo para side effect visual
+    effect(() => {
+        if (showStars) {
+            document.body.classList.add("panther-stars-active");
+        } else {
+            document.body.classList.remove("panther-stars-active");
+        }
+    }, [showStars]);
 </script>
 
 <Snow />
@@ -161,7 +171,7 @@
         <h3 class="attention-mini">Join the Fight</h3>
         <h2 class="attention-title">Saving the Snow Leopard</h2>
         <p class="attention-paragraph">
-            The snow leopard, a true ghost of the mountains. Yet, this very elusiveness now masks a desperate struggle for survival. Their unique adaptations, honed over millennia, are no match for the rapid changes inflicted by human activity. If we do not act, their silent prowl may become just a whisper in the winds, a memory of what once was. Let's ensure their enduring legacy, not their tragic loss.
+            The snow leopard is a true ghost of the mountains. Yet, this very elusiveness now masks a desperate struggle for survival. Their unique adaptations, honed over millennia, are no match for the rapid changes inflicted by human activity. If we don't act, their silent prowl may become just a whisper in the winds, a memory of what once was. Let's ensure their enduring legacy, not their tragic loss.
         </p>
         <div class="attention-img-wrapper">
             <img src="src/lib/assets/fight-leopard.png" alt="Join the Fight" class="attention-img" />

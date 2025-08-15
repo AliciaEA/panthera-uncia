@@ -1,68 +1,48 @@
 <script>
-    // Remove unused animation imports if not used in markup
-    // import { cubicOut } from "svelte/easing";
-    // import { fly } from "svelte/animate";
-    // import { slide } from "svelte/animate";
-
+    import { state, derived, effect } from "svelte";
     export let facts = [];
 
-    let currentFactIndex = 0;
-    let viewedFacts = new Set();
+        const currentFactIndex = state(0);
+        const viewedFacts = state(new Set());
 
-    $: currentFact = facts.length === 0 ? null : facts[currentFactIndex];
+        const currentFact = derived(() => facts.length === 0 ? null : facts[currentFactIndex]);
+        const allFactsViewed = derived(() => viewedFacts.size === facts.length && facts.length > 0);
+        const showPrev = derived(() => currentFactIndex > 0);
+        const showNext = derived(() => currentFactIndex < facts.length - 1);
 
-    // if all facts have been viewed
-    $: allFactsViewed = viewedFacts.size === facts.length && facts.length > 0;
-    // true if there is a previous fact to show
-    $: showPrev = currentFactIndex > 0;
-    // true if there is a next fact to show
-    $: showNext = currentFactIndex < facts.length - 1;
+    // Easter egg logic
+        const showEasterEgg = state(false);
 
-    // Move to the next/prev fact and Adds the fact to the set of viewed facts.
+    function triggerEasterEgg() {
+        showEasterEgg.set(Math.random() < 0.6);
+    }
 
     function nextFact() {
         if (showNext) {
-            currentFactIndex++;
-            showEasterEgg = false;
+            currentFactIndex.update(n => n + 1);
+            showEasterEgg.set(false);
         }
     }
 
     function prevFact() {
         if (showPrev) {
-            currentFactIndex--;
-           
+            currentFactIndex.update(n => n - 1);
+            showEasterEgg.set(false);
         }
     }
 
-    // When currentFact changes, mark it as viewed and update document title
-    $: {
+        effect(() => {
         if (currentFact && currentFact.id !== undefined) {
-            viewedFacts.add(currentFact.id);
+            viewedFacts.update(set => {
+                set.add(currentFact.id);
+                return set;
+            });
         }
-        allFactsViewed = viewedFacts.size === facts.length && facts.length > 0;
-    }
+    });
 
-    // Easter egg logic
-    import { onMount, onDestroy } from "svelte";
-    let showEasterEgg = false;
-    let easterEggTimer;
-
-    function triggerEasterEgg() {
-    if (Math.random() < 0.6) {
-        showEasterEgg = true;
-    } else {
-        showEasterEgg = false;
-    }
-    }
-
-    onMount(() => {
+        effect(() => {
         triggerEasterEgg();
-    });
-    
-
-    onDestroy(() => {
-        if (easterEggTimer) clearTimeout(easterEggTimer);
-    });
+    }, [currentFactIndex]);
 </script>
 
 <svelte:head>
