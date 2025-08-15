@@ -38,7 +38,14 @@
     <div class="container">
         <FactPanel facts={factsData} />
     </div>
+     <img
+        src="/src/lib/assets/pine-footer.png"
+        alt="Pine Background"
+        class="pine-bg"
+    />
+    
 </section>
+
 
 <style>
     /* CSS Section 1 - hero section */
@@ -287,7 +294,7 @@
         justify-content: center;
         gap: 2rem;
         position: relative;
-        padding-bottom: 7.5rem;
+        padding-bottom: 35%;
     }
     .chibi-panthuncia {
         position: absolute;
@@ -299,4 +306,20 @@
         z-index: 50;
         pointer-events: none;
     }
+
+    /* Pinos */
+    .pine-bg {
+        position: absolute;
+        left: 0;
+        bottom: -1%;
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
+        
+        object-fit: cover;
+        z-index: 299;
+        pointer-events: none;
+    }
+    
+    
 </style>

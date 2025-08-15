@@ -23,12 +23,14 @@
     function nextFact() {
         if (showNext) {
             currentFactIndex++;
+            showEasterEgg = false;
         }
     }
 
     function prevFact() {
         if (showPrev) {
             currentFactIndex--;
+           
         }
     }
 
@@ -46,19 +48,17 @@
     let easterEggTimer;
 
     function triggerEasterEgg() {
-        if (Math.random() < 0.7) {
-            showEasterEgg = true;
-            easterEggTimer = setTimeout(() => {
-                showEasterEgg = false;
-            }, 2000);
-        } else {
-            showEasterEgg = false;
-        }
+    if (Math.random() < 0.7) {
+        showEasterEgg = true;
+    } else {
+        showEasterEgg = false;
+    }
     }
 
     onMount(() => {
         triggerEasterEgg();
     });
+    
 
     onDestroy(() => {
         if (easterEggTimer) clearTimeout(easterEggTimer);
@@ -77,7 +77,7 @@
 
         {#if showEasterEgg}
             <div class="easter-egg">
-                <p>🐾 You've discovered a hidden message! 🐾</p>
+                <p>🐾 You found the Easter Egg! As stealthy as a snow leopard. 🐾</p>
             </div>
         {/if}
 
@@ -155,7 +155,6 @@
         font-size: 1.125rem; /* text-lg */
         color: #374151; /* text-gray-700 */
         line-height: 1.625; /* leading-relaxed */
-        min-height: 100px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -168,13 +167,19 @@
         transform: translateX(-50%);
         background-color: #fcd34d; /* bg-yellow-300 */
         color: #92400e; /* text-yellow-900 */
-        padding: 0;
+        padding: 10px 0;
         border-radius: 9999px; /* rounded-full */
         font-size: 0.875rem; /* text-sm */
         font-weight: 600; /* font-semibold */
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
         animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         z-index: 101;
+        
+    }
+    .easter-egg p {
+        margin: 0;
+        padding: 0 1rem; /* px-4 */
+        text-align: center;
     }
 
     @keyframes pulse {
@@ -245,6 +250,7 @@
     .interactive-button:hover {
         background-color: #4c6656; /* hover:bg-green-700 */
         transform: scale(1.05); /* hover:scale-105 */
+        text-decoration: none;
     }
 
     .planet-icon {
