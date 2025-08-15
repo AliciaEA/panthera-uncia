@@ -14,9 +14,19 @@ Panthera-Uncia is designed to educate users about the snow leopard, featuring:
 
 ## Interactive Elements & Implementation
 
-### 1. Snow Effect Button
+## Interactive
+
+### Snow Effect Button
 - **What:** A floating button with a snowflake icon. When clicked, it spins and triggers a snowfall animation for several seconds.
 - **How:** Implemented in `src/lib/components/snow.svelte` using Svelte state and timers. Accessible via keyboard and screen readers.
+
+### Moving Tag
+- **What:** A moving tag, from right to left, saying <<Vulnerable>>
+- **How:** Span Tag
+
+### Animated Data Cards
+- **What:** Cards display key statistics (population, range, leap distance) with animated counting when scrolled into view. *COUNTER and HOVER*
+- **How:** Implemented in `src/lib/components/DataCard.svelte` using IntersectionObserver and Svelte's lifecycle hooks.
 
 ### 2. Dynamic Facts Panel
 - **What:** A panel presenting snow leopard facts, navigable with previous/next buttons and progress dots. Viewing all facts unlocks a special interactive link.
@@ -26,9 +36,6 @@ Panthera-Uncia is designed to educate users about the snow leopard, featuring:
 - **What:** Occasionally, a special message appears in the facts panel, celebrating the user's discovery.
 - **How:** Controlled by a random chance (60% - if you want to get it, try refreshing. it will disappear after going to the next fact) in the FactPanel's logic, using Svelte's reactivity.
 
-### 4. Animated Data Cards
-- **What:** Cards display key statistics (population, range, leap distance) with animated counting when scrolled into view.
-- **How:** Implemented in `src/lib/components/DataCard.svelte` using IntersectionObserver and Svelte's lifecycle hooks.
 
 ### 5. Interactive Animal Scene
 - **What:** On the `/meetup` page, users interact with a snow pile to reveal a snow leopard cub. Dialogue changes based on user actions, and a star effect appears when the cub is found. 

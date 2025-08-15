@@ -7,7 +7,9 @@
     import Snow from "$lib/components/snow.svelte";
 </script>
 
+<!-- Interactive Feature: Snow Effect -->
 <Snow />
+<!-- Presentation of the website -->
 <section class="hero-section">
     <div class="hero-overlay"></div>
     <div class="hero-flex">
@@ -21,12 +23,15 @@
     </div>
 </section>
 
+<!-- Numeric Data about Panthuncia -->
 <section class="data-section">
     <div class="data-image-wrapper">
         <img src={vulnerablePant} alt="Vulnerable Panthera Uncia" class="data-image"/>
+        <!-- Interactive Feature: Moving Tag -->
         <span class="vulnerable-tag">Vulnerable</span>
     </div>
     <div class="stats-container">
+        <!-- Interactive feature: Counter, and also Hover effect -->
         <DataCard finalValue={4000} description="Snow leopards remaining in the wild" />
         <DataCard finalValue={36} description="Transboundary protected areas." />
         <DataCard finalValue={15} description="Meters in a single leap." />
@@ -35,9 +40,11 @@
     </div>
 </section>
 
+<!-- Some interesting facts. <Requirement> -->
 <section id="facts-panel" class="facts-panel-section">
     <img src="src/lib/assets/chibi-panthuncia.png" alt="Chibi Panthera Uncia" class="chibi-panthuncia" />
     <div class="container">
+        <!-- Interactive Feature: Easter Egg 60% chances, Facts unlocks a webpage  -->
         <FactPanel facts={factsData} />
     </div>
      <img
