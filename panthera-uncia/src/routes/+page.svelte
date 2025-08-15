@@ -316,7 +316,7 @@
         pointer-events: none;
     }
 
-    /* Pinos */
+    /* Pines */
     .pine-bg {
         position: absolute;
         left: 0;

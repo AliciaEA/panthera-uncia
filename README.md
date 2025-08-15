@@ -30,7 +30,7 @@ Panthera-Uncia is designed to educate users about the snow leopard, featuring:
 
 ### 2. Dynamic Facts Panel
 - **What:** A panel presenting snow leopard facts, navigable with previous/next buttons and progress dots. Viewing all facts unlocks a special interactive link.
-- **How:** Implemented in `src/lib/components/FactPanel.svelte` using Svelte 5 runes (`state`, `derived`, `effect`). Facts are loaded from a JSON file. Tracks viewed facts and triggers an easter egg with random chance.
+- **How:** Implemented in `src/lib/components/FactPanel.svelte`. Facts are loaded from a JSON file. Tracks viewed facts and triggers an easter egg with random chance.
 
 ### 3. Easter Egg
 - **What:** Occasionally, a special message appears in the facts panel, celebrating the user's discovery.
@@ -41,7 +41,7 @@ Panthera-Uncia is designed to educate users about the snow leopard, featuring:
 - **What:** On the `/meetup` page, users interact with a snow pile to reveal a snow leopard cub. Dialogue changes based on user actions, and a star effect appears when the cub is found. 
         -If you dont click on the snow pile, it will change dialogue. 
         -After you do, It will only change each time you click on [Panthuncia], and give you stars too.
-- **How:** Uses Svelte 5's `effect` rune for global side effects (star animation). Dialogue logic is managed with state variables and event handlers.
+- **How:** Dialogue logic is managed with state variables and event handlers.
 
 ### 6. ZooBanner Component
 - **What:** A banner at the top of every page. -> requirement
