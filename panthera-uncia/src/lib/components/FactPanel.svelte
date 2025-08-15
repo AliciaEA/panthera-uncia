@@ -33,26 +33,20 @@
     }
 
     // When currentFact changes, mark it as viewed and update document title
-    $: if (currentFact && currentFact.id !== undefined) {
-        viewedFacts.add(currentFact.id);
-        document.title = currentFact.title
-            ? `Fact: ${currentFact.title}`
-            : "Panthera Uncia";
+    $: {
+        if (currentFact && currentFact.id !== undefined) {
+            viewedFacts.add(currentFact.id);
+        }
+        allFactsViewed = viewedFacts.size === facts.length && facts.length > 0;
     }
 
     // Easter egg logic
     import { onMount, onDestroy } from "svelte";
-    // Boolean: true if the easter egg should be shown
     let showEasterEgg = false;
-    // Timer reference for easter egg display
     let easterEggTimer;
 
-    /**
-     * Randomly triggers the easter egg with a 5% chance when the component mounts.
-     * The easter egg is shown for 2 seconds, then hidden.
-     */
     function triggerEasterEgg() {
-        if (Math.random() < 0.05) {
+        if (Math.random() < 0.7) {
             showEasterEgg = true;
             easterEggTimer = setTimeout(() => {
                 showEasterEgg = false;
@@ -62,12 +56,10 @@
         }
     }
 
-    // Run the easter egg trigger when the component mounts
     onMount(() => {
         triggerEasterEgg();
     });
 
-    // Clean up the timer if the component is destroyed
     onDestroy(() => {
         if (easterEggTimer) clearTimeout(easterEggTimer);
     });
@@ -78,10 +70,10 @@
 </svelte:head>
 
 <div class="fact-panel-container">
-    <img src="src/lib/assets/paws.png" alt="panthera-uncia paws" class="paws-decoration"/>
+    <img src="src/lib/assets/paws.png" alt="panthera-uncia paws" class="paws-decoration" style="pointer-events: none; z-index: 0;"/>
     <div class="fact-content">
         <h3>{currentFact.title}</h3>
-        <p>{currentFact.description}</p>
+        <p>{currentFact.fact}</p>
 
         {#if showEasterEgg}
             <div class="easter-egg">
@@ -92,7 +84,7 @@
         <!-- Fact navigation controls: Prev, Next, Dots -->
         <div class="fact-navigation-controls">
             {#if showPrev}
-                <button on:click={prevFact} class="nav-button">Previous</button>
+                <button on:click={prevFact} class="nav-button" aria-label="Previous fact">&#8592;</button>
             {/if}
            
             <div class="progress-dots">
@@ -104,19 +96,17 @@
             </div>
 
             {#if showNext}
-                <button on:click={nextFact} class="nav-button">Next</button>
+                <button on:click={nextFact} class="nav-button" aria-label="Next fact">&#8594;</button>
             {/if}
         </div>
     </div>
 
     {#if allFactsViewed}
-        <div transition:slide="{{ axis: 'y', duration: 800, easing: cubicOut }}" class="interactive-button-wrapper">
-            <a href="" class="interactive-button">
+        <div class="interactive-button-wrapper">
+            <a href="/interactive" class="interactive-button">
                 <img src="src/lib/assets/planet.png" alt="Little planet" class="planet-icon" />
                 Meet with Panthera Uncia!
             </a>
-
-
         </div>
     {/if}
 </div>
@@ -124,26 +114,34 @@
 <style>
     .fact-panel-container {
         position: relative;
-        background-color: #f3f4f6; /* bg-gray-100 */
+        background-color: rgb(232, 236, 240); /* bg-gray-100 */
         padding: 2rem;
         border-radius: 0.5rem; /* rounded-lg */
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+    box-shadow: 0 24px 48px -8px rgba(0,0,0,0.32), 0 12px 36px -8px rgba(0,0,0,0.28); /* shadow-xl even stronger */
         max-width: 48rem; /* max-w-2xl */
         margin: 4rem auto 0 auto; /* mt-16 mx-auto */
         z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .paws-decoration {
         position: absolute;
         bottom: 1rem; /* bottom-4 */
         left: 1rem; /* left-4 */
-        width: 5rem; /* w-20 */
+        width: 7.5rem; /* w-30, bigger paws */
         height: auto;
         opacity: 0.7;
     }
     .fact-content {
         margin-top: 7rem; /* mt-28 */
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .fact-content h3 {
@@ -165,17 +163,18 @@
 
     .easter-egg {
         position: absolute;
-        top: 0;
+        top: 3.5rem;
         left: 50%;
         transform: translateX(-50%);
         background-color: #fcd34d; /* bg-yellow-300 */
         color: #92400e; /* text-yellow-900 */
-        padding: 0.25rem 0.75rem;
+        padding: 0;
         border-radius: 9999px; /* rounded-full */
         font-size: 0.875rem; /* text-sm */
         font-weight: 600; /* font-semibold */
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
         animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        z-index: 101;
     }
 
     @keyframes pulse {
@@ -189,12 +188,13 @@
         align-items: center;
         margin-top: 1.5rem; /* mt-6 */
         gap: 1rem; /* space-x-4 */
+        width: 100%;
     }
 
     .nav-button {
         padding: 0.5rem;
         border-radius: 9999px; /* rounded-full */
-        background-color: #3b82f6; /* bg-blue-500 */
+        background-color: #3e6d6d; /* bg-blue-500 */
         color: white;
         border: none;
         cursor: pointer;
@@ -202,18 +202,14 @@
         transition: background-color 0.15s ease-in-out, opacity 0.15s ease-in-out;
     }
 
-    .nav-button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
-
-    .nav-button:hover:not(:disabled) {
-        background-color: #2563eb; /* hover:bg-blue-600 */
-    }
+   
+   
 
     .progress-dots {
         display: flex;
         gap: 0.5rem; /* space-x-2 */
+        justify-content: center;
+        align-items: center;
     }
 
     .dot {
@@ -224,7 +220,7 @@
     }
 
     .dot.active {
-        background-color: #3b82f6; /* bg-blue-500 */
+        background-color: #506777; /* bg-blue-500 */
     }
 
     .interactive-button-wrapper {
@@ -240,14 +236,14 @@
         padding: 0.75rem 2rem; /* px-8 py-3 */
         font-weight: bold;
         color: white;
-        background-color: #22c55e; /* bg-green-600 */
+        background-color: rgb(121, 156, 134);
         border-radius: 9999px; /* rounded-full */
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    box-shadow: 0 24px 48px -8px rgba(0,0,0,0.32), 0 12px 36px -8px rgba(0,0,0,0.28); /* shadow-lg even stronger */
         transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
     }
 
     .interactive-button:hover {
-        background-color: #16a34a; /* hover:bg-green-700 */
+        background-color: #4c6656; /* hover:bg-green-700 */
         transform: scale(1.05); /* hover:scale-105 */
     }
 
@@ -261,9 +257,31 @@
 
     @keyframes vibrate {
         0% { transform: translateX(0) translateY(0) rotate(0deg); }
-        25% { transform: translateX(-1px) translateY(1px) rotate(-1deg); }
-        50% { transform: translateX(1px) translateY(-1px) rotate(1deg); }
-        75% { transform: translateX(-1px) translateY(1px) rotate(-1deg); }
+        20% { transform: translateX(-3px) translateY(2px) rotate(-4deg); }
+        50% { transform: translateX(4px) translateY(-3px) rotate(5deg); }
+        80% { transform: translateX(-3px) translateY(2px) rotate(-4deg); }
         100% { transform: translateX(0) translateY(0) rotate(0deg); }
+    }
+
+    @media (max-width: 600px) {
+        .fact-panel-container {
+            padding: 1rem;
+            margin-top: 2rem;
+            min-height: 520px;
+        }
+        .fact-content {
+            margin-top: 4rem;
+        }
+        .paws-decoration {
+            bottom: 0.5rem;
+            left: 0.5rem;
+            width: 5rem;
+            z-index: 0;
+        }
+        .interactive-button-wrapper {
+            margin-top: 3.5rem;
+            z-index: 2;
+            position: relative;
+        }
     }
 </style>

@@ -41,15 +41,6 @@
     </p>
 </footer>
 
-<style >
-
-    html, body {
-        height: 100%;
-        margin: 0;
-    }
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh; 
-    }
+<style>
+/* Elimina los estilos globales html, body de aquí. Ponlos en app.css */
 </style>

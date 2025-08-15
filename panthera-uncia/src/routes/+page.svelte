@@ -33,6 +33,13 @@
     </div>
 </section>
 
+<section id="facts-panel" class="facts-panel-section">
+    <img src="src/lib/assets/chibi-panthuncia.png" alt="Chibi Panthera Uncia" class="chibi-panthuncia" />
+    <div class="container">
+        <FactPanel facts={factsData} />
+    </div>
+</section>
+
 <style>
     /* CSS Section 1 - hero section */
     .hero-section {
@@ -208,7 +215,7 @@
     .data-section {
         background-color: #d0dce7;
         color: white;
-        padding: 8rem 2rem;
+        padding: 10rem 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -268,5 +275,28 @@
         gap: 2.5rem;
         padding: 1.5rem;
         }
+    }
+
+    /* Section 3 - Facts */
+    .facts-panel-section {
+        background-color: #f0f4f8;
+        padding: 4rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        position: relative;
+        padding-bottom: 7.5rem;
+    }
+    .chibi-panthuncia {
+        position: absolute;
+        top: -9rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        height: auto;
+        z-index: 50;
+        pointer-events: none;
     }
 </style>
