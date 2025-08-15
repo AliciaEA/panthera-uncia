@@ -4,8 +4,10 @@
     import pantheraImg from "$lib/assets/main-panthuncia.png";
     import vulnerablePant from "$lib/assets/vulnerable-panthuncia.png";
     import DataCard from "$lib/components/DataCard.svelte";
+    import Snow from "$lib/components/snow.svelte";
 </script>
 
+<Snow />
 <section class="hero-section">
     <div class="hero-overlay"></div>
     <div class="hero-flex">
@@ -138,7 +140,7 @@
         }
         .hero-content {
             flex: 0 0 auto;
-            max-width: 100vw;
+           
             width: 100%;
             margin: 1rem 0 1rem 0;
             padding-right: 0;
@@ -171,7 +173,7 @@
         }
         .hero-image-wrapper img {
             width: clamp(140px, 70vw, 400px);
-            max-width: 90vw;
+            
             margin: 0 0 -4rem 0;
         }
     }

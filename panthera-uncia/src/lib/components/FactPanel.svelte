@@ -48,7 +48,7 @@
     let easterEggTimer;
 
     function triggerEasterEgg() {
-    if (Math.random() < 0.7) {
+    if (Math.random() < 0.6) {
         showEasterEgg = true;
     } else {
         showEasterEgg = false;

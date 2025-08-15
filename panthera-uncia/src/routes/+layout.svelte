@@ -2,6 +2,7 @@
     import ZooBanner from "$lib/components/ZooBanner.svelte";
     import "../app.css";
     import favicon from "$lib/assets/favicon.svg";
+    import Snow from "$lib/components/snow.svelte";
 
     let { children } = $props();
 </script>
@@ -74,6 +75,22 @@
                             target="_blank">Vecteezy</a
                         >
                     </li>
+                    <li>
+                        Baby Panthera Uncia: <a
+                            href="https://www.vecteezy.com/free-png/snow"
+                        >
+                            Vecteezy</a
+                        >
+                    </li>
+                    <li>
+                        Snow Leopard Confused: <a
+                            href="https://www.vecteezy.com/free-png/snow-leopard"
+                            >Vecteezy</a
+                        >
+                    </li>
+                    <li>
+                        Snow Pile: <a href="https://www.vecteezy.com/free-png/snow-pile">Vecteezy</a>
+                    </li>
                 </ul>
                 <ul>
                     <li>
@@ -92,6 +109,17 @@
                         Earth: <a
                             href="https://www.vecteezy.com/free-png/earth"
                             target="_blank">Vecteezy</a
+                        >
+                    </li>
+                    <li>
+                        Found Panthera Uncia: <a
+                            href="https://www.vecteezy.com/free-png/snow-leopard"
+                            >Vecteezy</a
+                        >
+                    </li>
+                    <li>
+                        Interactive Mountain: <a href="https://www.vecteezy.com/free-vector/snow"
+                            >Vecteezy</a
                         >
                     </li>
                 </ul>
@@ -243,7 +271,6 @@
         margin-bottom: 0.5rem;
         font-size: 1.05rem;
     }
-   
 
     .footer-links a,
     .footer-contact a {
