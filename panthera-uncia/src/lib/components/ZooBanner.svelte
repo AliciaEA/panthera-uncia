@@ -4,8 +4,9 @@
     </div>
 </a>
 
+<!-- I'm so sorry, I had to change the banner color because purple goes better with my website -->
 <style>
-    /* Your provided CSS styles for the banner */
+    
     .bannerIcon {
         vertical-align: -0.07em;
         font-size: 24px !important;

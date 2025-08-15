@@ -1,8 +1,4 @@
 <script>
-    // Remove unused animation imports if not used in markup
-    // import { cubicOut } from "svelte/easing";
-    // import { fly } from "svelte/animate";
-    // import { slide } from "svelte/animate";
 
     export let facts = [];
 
@@ -75,6 +71,7 @@
         <h3>{currentFact.title}</h3>
         <p>{currentFact.fact}</p>
 
+        <!-- Message Easter egg *(60% chances)-->
         {#if showEasterEgg}
             <div class="easter-egg">
                 <p>🐾 You found the Easter Egg! As stealthy as a snow leopard. 🐾</p>

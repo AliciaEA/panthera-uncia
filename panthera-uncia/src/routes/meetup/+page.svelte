@@ -1,8 +1,11 @@
 <script>
     import Snow from "$lib/components/snow.svelte";
+    
     let snowPileClicked = false;
     let dialogueClickedIndex = 0;
     let dialogueNotClickedIndex = 0;
+
+    // Dialogues
     let dialoguesClicked = [
         "Oh, you found it!, Try to pet it!",
         "It seems to like you!",
@@ -18,6 +21,7 @@
         "It looks like something is hidden!",
         "Are you up for discovering it?",
     ];
+
     let cubDialogue = dialoguesNotClicked[0];
 
     let showStars = false;
@@ -42,6 +46,7 @@
         }
     }
 
+    // Interactive > if you dont click the snow, dialogue changes
     function handleSectionClick(event) {
         if (!snowPileClicked && !event.target.closest(".snow-pile-btn")) {
             if (dialogueNotClickedIndex < dialoguesNotClicked.length - 1) {
@@ -71,6 +76,7 @@
                 alt="Panthera cub"
                 class="panthera-cub"
             />
+            <!-- Interactive functionality, Dialogue that changes with a click -->
             <div class="cub-dialogue">
                 <p>{cubDialogue}</p>
             </div>
@@ -95,7 +101,7 @@
                         type="button"
                         class="found-panther-btn"
                         on:click={foundPantherClick}
-                        aria-label="Interactuar con panterita"
+                        aria-label="Interact with panther cub"
                         style="background:none;border:none;padding:0;position:relative;cursor:pointer;"
                     >
                         <img
@@ -104,6 +110,8 @@
                             id="found-panther"
                             style="pointer-events:auto;"
                         />
+
+                        <!-- Interactive Effect: Shows stars when petting Panthuncia -->
                         {#if showStars}
                             <span
                                 class="star-effect"
@@ -121,7 +129,7 @@
             {/if}
         </div>
         <div class="back-arrow-wrapper">
-            <a href="/" class="back-arrow" aria-label="Regresar a la principal">
+            <a href="/" class="back-arrow" aria-label="Return to main page">
                 <svg
                     width="54"
                     height="54"
@@ -156,6 +164,7 @@
     </div>
 </section>
 
+<!-- Attention Grabber -->
 <section class="attention-grabber" style="position: relative;">
     <div class="attention-grabber-content">
         <h3 class="attention-mini">Join the Fight</h3>

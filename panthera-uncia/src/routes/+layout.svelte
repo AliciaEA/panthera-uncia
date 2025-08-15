@@ -7,6 +7,7 @@
     let { children } = $props();
 </script>
 
+<!-- Requirement svelte:head -->
 <svelte:head>
     <link rel="icon" href={favicon} />
 </svelte:head>
@@ -15,17 +16,17 @@
 <ZooBanner />
 <div style="height: 65px;"></div>
 
-<!-- My Main content area I Guess -->
+
 <main class="flex-grow">
     {@render children()}
 </main>
 
-<!-- Footer (have to make it prettier) -->
+<!-- Footer -->
 <footer class="site-footer">
     <div class="footer-columns">
         <div class="footer-col footer-brand">
             <div class="footer-icons">
-                <!-- PNG ICONS: replace src with your PNGs in static/ -->
+                <!-- HackClub & The Zoo -->
                 <a href="https://zoo.hackclub.com/" title="The Zoo">
                     <img
                         src="/src/lib/assets/the-zoo-logo.png"
@@ -47,6 +48,8 @@
                 </a>
             </div>
         </div>
+        
+        <!-- CREDITS to VECTEEZY (love ya vecteezy) -->
         <div class="footer-col footer-links">
             <div class="footer-section-title">Vectors & Credits</div>
             <div class="footer-credits-grid">
@@ -125,6 +128,8 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Me, myself and I -->
         <div class="footer-col footer-contact">
             <div class="footer-section-title">Contact</div>
 
@@ -145,6 +150,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer Bottom -->
     <div class="footer-bottom">
         © {new Date().getFullYear()} Panthera-Uncia. Todos los derechos reservados.
     </div>

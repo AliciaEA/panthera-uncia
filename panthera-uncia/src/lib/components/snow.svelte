@@ -1,4 +1,6 @@
 <script>
+
+  // Works like a snowrain.
   let isSpinning = false;
   let isSnowing = false;
   let snowflakes = [];
