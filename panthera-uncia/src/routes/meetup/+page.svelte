@@ -1,6 +1,12 @@
 <script>
     import Snow from "$lib/components/snow.svelte";
-    
+
+    import snowPileImg from "$lib/assets/snow-pile.png";
+    import foundPantherImg from "$lib/assets/found-panth.png";
+    import confusedPantherImg from "$lib/assets/confused-panth.png";
+    import fightLeopardImg from "$lib/assets/fight-leopard.png";
+   import pineImg from "$lib/assets/pine-footer.png";
+
     let snowPileClicked = false;
     let dialogueClickedIndex = 0;
     let dialogueNotClickedIndex = 0;
@@ -72,7 +78,7 @@
     >
         <div class="scene-wrapper">
             <img
-                src="src/lib/assets/confused-panth.png"
+                src={confusedPantherImg}
                 alt="Panthera cub"
                 class="panthera-cub"
             />
@@ -86,11 +92,7 @@
                 on:click={revealCub}
                 aria-label="Descubrir panterita"
             >
-                <img
-                    src="src/lib/assets/snow-pile.png"
-                    alt="Snow pile"
-                    class="snow-pile"
-                />
+                <img src={snowPileImg} alt="Snow pile" class="snow-pile" />
             </button>
 
             {#if snowPileClicked}
@@ -105,7 +107,7 @@
                         style="background:none;border:none;padding:0;position:relative;cursor:pointer;"
                     >
                         <img
-                            src="src/lib/assets/found-panth.png"
+                            src={foundPantherImg}
                             alt="Panthera cub"
                             id="found-panther"
                             style="pointer-events:auto;"
@@ -170,18 +172,22 @@
         <h3 class="attention-mini">Join the Fight</h3>
         <h2 class="attention-title">Saving the Snow Leopard</h2>
         <p class="attention-paragraph">
-            The snow leopard, a true ghost of the mountains. Yet, this very elusiveness now masks a desperate struggle for survival. Their unique adaptations, honed over millennia, are no match for the rapid changes inflicted by human activity. If we do not act, their silent prowl may become just a whisper in the winds, a memory of what once was. Let's ensure their enduring legacy, not their tragic loss.
+            The snow leopard, a true ghost of the mountains. Yet, this very
+            elusiveness now masks a desperate struggle for survival. Their
+            unique adaptations, honed over millennia, are no match for the rapid
+            changes inflicted by human activity. If we do not act, their silent
+            prowl may become just a whisper in the winds, a memory of what once
+            was. Let's ensure their enduring legacy, not their tragic loss.
         </p>
         <div class="attention-img-wrapper">
-            <img src="src/lib/assets/fight-leopard.png" alt="Join the Fight" class="attention-img" />
+            <img
+                src={fightLeopardImg}
+                alt="Join the Fight"
+                class="attention-img"
+            />
         </div>
     </div>
-    <img
-        src="/src/lib/assets/pine-footer.png"
-        alt="Pine Background"
-        class="pine-bg"
-        
-    />
+    <img src={pineImg} alt="Pine Background" class="pine-bg" />
 </section>
 
 <style>
@@ -213,8 +219,8 @@
     }
     .interactive-section {
         min-height: 100vh;
-        background: url("src/lib/assets/interactive-snow-floor.svg") center
-            center / cover no-repeat;
+        background: url("/src/lib/assets/interactive-snow-floor.svg") center center / cover
+            no-repeat;
         color: white;
         display: flex;
         flex-direction: column;
@@ -301,92 +307,92 @@
         width: 54px;
         height: 54px;
     }
-        .back-arrow:hover {
-                transform: scale(1.15);
-        }
+    .back-arrow:hover {
+        transform: scale(1.15);
+    }
 
-        /* Attention Grabber Section */
+    /* Attention Grabber Section */
+    .attention-grabber {
+        width: 100vw;
+        background: linear-gradient(180deg, #f8fafc 0%, #e3e6f3 100%);
+        padding: 8rem 2rem 17rem 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    .attention-grabber-content {
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    .attention-mini {
+        font-size: 1.1rem;
+        color: #7e57c2;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    .attention-title {
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #1f2937;
+        line-height: 1.2;
+        word-break: break-word;
+    }
+    .attention-paragraph {
+        font-size: 1.05rem;
+        color: #374151;
+        margin-bottom: 2rem;
+        padding: 0.7rem 0;
+        line-height: 1.6;
+        word-break: break-word;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    .attention-img-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 95%;
+        margin-top: 1.5rem;
+    }
+    .attention-img {
+        width: 100%;
+
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+
+    @media (max-width: 600px) {
         .attention-grabber {
-            width: 100vw;
-            background: linear-gradient(180deg, #f8fafc 0%, #e3e6f3 100%);
-            padding: 8rem 2rem 17rem 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
+            padding: 9rem 1rem 11rem 1rem;
         }
         .attention-grabber-content {
-            max-width: 600px;
-            width: 100%;
-            margin: 0 auto;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-sizing: border-box;
-        }
-        .attention-mini {
-            font-size: 1.1rem;
-            color: #7e57c2;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            max-width: 98vw;
+            padding: 0 0.5rem;
         }
         .attention-title {
-            font-size: 2.2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #1f2937;
-            line-height: 1.2;
-            word-break: break-word;
+            font-size: 2rem;
         }
         .attention-paragraph {
-            font-size: 1.05rem;
-            color: #374151;
-            margin-bottom: 2rem;
-            padding: 0.7rem 0;
-            line-height: 1.6;
-            word-break: break-word;
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-        .attention-img-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 95%;
-            margin-top: 1.5rem;
+            font-size: 0.98rem;
+            padding: 0.9rem 0.2rem;
+            max-width: 98vw;
         }
         .attention-img {
-            width: 100%;
-           
-            height: auto;
-            margin: 0 auto;
-            display: block;
+            max-width: 100%;
         }
-
-        @media (max-width: 600px) {
-            .attention-grabber {
-                padding: 9rem 1rem 11rem 1rem;
-            }
-            .attention-grabber-content {
-                max-width: 98vw;
-                padding: 0 0.5rem;
-            }
-            .attention-title {
-                font-size: 2rem;
-            }
-            .attention-paragraph {
-                font-size: 0.98rem;
-                padding: 0.9rem 0.2rem;
-                max-width: 98vw;
-            }
-            .attention-img {
-                max-width: 100%;
-            }
-        }
-         /* Pinos */
+    }
+    /* Pinos */
     .pine-bg {
         position: absolute;
         left: 0;
@@ -398,5 +404,4 @@
         z-index: 10;
         pointer-events: none;
     }
-    
 </style>

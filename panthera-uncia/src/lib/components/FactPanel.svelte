@@ -1,4 +1,6 @@
 <script>
+    import pawsImg from "$lib/assets/paws.png";
+    import planetImg from "$lib/assets/planet.png";
 
     export let facts = [];
 
@@ -26,7 +28,6 @@
     function prevFact() {
         if (showPrev) {
             currentFactIndex--;
-           
         }
     }
 
@@ -44,17 +45,16 @@
     let easterEggTimer;
 
     function triggerEasterEgg() {
-    if (Math.random() < 0.6) {
-        showEasterEgg = true;
-    } else {
-        showEasterEgg = false;
-    }
+        if (Math.random() < 0.6) {
+            showEasterEgg = true;
+        } else {
+            showEasterEgg = false;
+        }
     }
 
     onMount(() => {
         triggerEasterEgg();
     });
-    
 
     onDestroy(() => {
         if (easterEggTimer) clearTimeout(easterEggTimer);
@@ -66,7 +66,12 @@
 </svelte:head>
 
 <div class="fact-panel-container">
-    <img src="src/lib/assets/paws.png" alt="panthera-uncia paws" class="paws-decoration" style="pointer-events: none; z-index: 0;"/>
+    <img
+        src={pawsImg}
+        alt="panthera-uncia paws"
+        class="paws-decoration"
+        style="pointer-events: none; z-index: 0;"
+    />
     <div class="fact-content">
         <h3>{currentFact.title}</h3>
         <p>{currentFact.fact}</p>
@@ -74,16 +79,23 @@
         <!-- Message Easter egg *(60% chances)-->
         {#if showEasterEgg}
             <div class="easter-egg">
-                <p>🐾 You found the Easter Egg! As stealthy as a snow leopard. 🐾</p>
+                <p>
+                    🐾 You found the Easter Egg! As stealthy as a snow leopard.
+                    🐾
+                </p>
             </div>
         {/if}
 
         <!-- Fact navigation controls: Prev, Next, Dots -->
         <div class="fact-navigation-controls">
             {#if showPrev}
-                <button on:click={prevFact} class="nav-button" aria-label="Previous fact">&#8592;</button>
+                <button
+                    on:click={prevFact}
+                    class="nav-button"
+                    aria-label="Previous fact">&#8592;</button
+                >
             {/if}
-           
+
             <div class="progress-dots">
                 {#each facts as fact, index (fact.id)}
                     <span
@@ -93,7 +105,11 @@
             </div>
 
             {#if showNext}
-                <button on:click={nextFact} class="nav-button" aria-label="Next fact">&#8594;</button>
+                <button
+                    on:click={nextFact}
+                    class="nav-button"
+                    aria-label="Next fact">&#8594;</button
+                >
             {/if}
         </div>
     </div>
@@ -101,7 +117,7 @@
     {#if allFactsViewed}
         <div class="interactive-button-wrapper">
             <a href="/meetup" class="interactive-button">
-                <img src="src/lib/assets/planet.png" alt="Little planet" class="planet-icon" />
+                <img src={planetImg} alt="Little planet" class="planet-icon" />
                 Meet with Panthera Uncia!
             </a>
         </div>
@@ -114,7 +130,9 @@
         background-color: rgb(232, 236, 240); /* bg-gray-100 */
         padding: 2rem;
         border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0 24px 48px -8px rgba(0,0,0,0.32), 0 12px 36px -8px rgba(0,0,0,0.28); /* shadow-xl even stronger */
+        box-shadow:
+            0 24px 48px -8px rgba(0, 0, 0, 0.32),
+            0 12px 36px -8px rgba(0, 0, 0, 0.28); /* shadow-xl even stronger */
         max-width: 48rem; /* max-w-2xl */
         margin: 4rem auto 0 auto; /* mt-16 mx-auto */
         z-index: 10;
@@ -168,10 +186,11 @@
         border-radius: 9999px; /* rounded-full */
         font-size: 0.875rem; /* text-sm */
         font-weight: 600; /* font-semibold */
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
         animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         z-index: 101;
-        
     }
     .easter-egg p {
         margin: 0;
@@ -180,8 +199,13 @@
     }
 
     @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: .5; }
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
     }
 
     .fact-navigation-controls {
@@ -201,11 +225,10 @@
         border: none;
         cursor: pointer;
         opacity: 1;
-        transition: background-color 0.15s ease-in-out, opacity 0.15s ease-in-out;
+        transition:
+            background-color 0.15s ease-in-out,
+            opacity 0.15s ease-in-out;
     }
-
-   
-   
 
     .progress-dots {
         display: flex;
@@ -240,8 +263,12 @@
         color: white;
         background-color: rgb(121, 156, 134);
         border-radius: 9999px; /* rounded-full */
-    box-shadow: 0 24px 48px -8px rgba(0,0,0,0.32), 0 12px 36px -8px rgba(0,0,0,0.28); /* shadow-lg even stronger */
-        transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
+        box-shadow:
+            0 24px 48px -8px rgba(0, 0, 0, 0.32),
+            0 12px 36px -8px rgba(0, 0, 0, 0.28); /* shadow-lg even stronger */
+        transition:
+            background-color 0.15s ease-in-out,
+            transform 0.15s ease-in-out;
     }
 
     .interactive-button:hover {
@@ -259,11 +286,21 @@
     }
 
     @keyframes vibrate {
-        0% { transform: translateX(0) translateY(0) rotate(0deg); }
-        20% { transform: translateX(-3px) translateY(2px) rotate(-4deg); }
-        50% { transform: translateX(4px) translateY(-3px) rotate(5deg); }
-        80% { transform: translateX(-3px) translateY(2px) rotate(-4deg); }
-        100% { transform: translateX(0) translateY(0) rotate(0deg); }
+        0% {
+            transform: translateX(0) translateY(0) rotate(0deg);
+        }
+        20% {
+            transform: translateX(-3px) translateY(2px) rotate(-4deg);
+        }
+        50% {
+            transform: translateX(4px) translateY(-3px) rotate(5deg);
+        }
+        80% {
+            transform: translateX(-3px) translateY(2px) rotate(-4deg);
+        }
+        100% {
+            transform: translateX(0) translateY(0) rotate(0deg);
+        }
     }
 
     @media (max-width: 600px) {

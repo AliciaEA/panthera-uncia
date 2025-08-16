@@ -3,6 +3,9 @@
     import "../app.css";
     import favicon from "$lib/assets/favicon.svg";
     import Snow from "$lib/components/snow.svelte";
+    import github from "$lib/assets/github-logo.png";
+    import theZooLogo from "$lib/assets/the-zoo-logo.png";
+    import hackclubLogo from "$lib/assets/hackclub-footer.png";
 
     let { children } = $props();
 </script>
@@ -29,7 +32,7 @@
                 <!-- HackClub & The Zoo -->
                 <a href="https://zoo.hackclub.com/" title="The Zoo">
                     <img
-                        src="/src/lib/assets/the-zoo-logo.png"
+                        src={theZooLogo}
                         alt="The Zoo"
                         class="footer-icon"
                     />
@@ -41,7 +44,7 @@
                     title="Hackclub"
                 >
                     <img
-                        src="/src/lib/assets/hackclub-footer.png"
+                        src={hackclubLogo}
                         alt="Hackclub"
                         class="footer-icon"
                     />
@@ -142,7 +145,7 @@
                     id="github-icon"
                 >
                     <img
-                        src="/src/lib/assets/github-logo.png"
+                        src={github}
                         alt="GitHub"
                         class="footer-icon"
                     />

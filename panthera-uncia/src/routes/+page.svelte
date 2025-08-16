@@ -3,8 +3,11 @@
     import factsData from "$lib/data/facts.json";
     import pantheraImg from "$lib/assets/main-panthuncia.png";
     import vulnerablePant from "$lib/assets/vulnerable-panthuncia.png";
+ 
+    import pineImg from "$lib/assets/pine-footer.png";
     import DataCard from "$lib/components/DataCard.svelte";
     import Snow from "$lib/components/snow.svelte";
+    import chibiPanth from "$lib/assets/chibi-panthuncia.png";
 </script>
 
 <!-- Interactive Feature: Snow Effect -->
@@ -26,35 +29,42 @@
 <!-- Numeric Data about Panthuncia -->
 <section class="data-section">
     <div class="data-image-wrapper">
-        <img src={vulnerablePant} alt="Vulnerable Panthera Uncia" class="data-image"/>
+        <img
+            src={vulnerablePant}
+            alt="Vulnerable Panthera Uncia"
+            class="data-image"
+        />
         <!-- Interactive Feature: Moving Tag -->
         <span class="vulnerable-tag">Vulnerable</span>
     </div>
     <div class="stats-container">
         <!-- Interactive feature: Counter, and also Hover effect -->
-        <DataCard finalValue={4000} description="Snow leopards remaining in the wild" />
-        <DataCard finalValue={36} description="Transboundary protected areas." />
+        <DataCard
+            finalValue={4000}
+            description="Snow leopards remaining in the wild"
+        />
+        <DataCard
+            finalValue={36}
+            description="Transboundary protected areas."
+        />
         <DataCard finalValue={15} description="Meters in a single leap." />
         <DataCard finalValue={12} description="Countries in their range." />
-        
     </div>
 </section>
 
 <!-- Some interesting facts. <Requirement> -->
 <section id="facts-panel" class="facts-panel-section">
-    <img src="src/lib/assets/chibi-panthuncia.png" alt="Chibi Panthera Uncia" class="chibi-panthuncia" />
+    <img
+        src={chibiPanth}
+        alt="Chibi Panthera Uncia"
+        class="chibi-panthuncia"
+    />
     <div class="container">
         <!-- Interactive Feature: Easter Egg 60% chances, Facts unlocks a webpage  -->
         <FactPanel facts={factsData} />
     </div>
-     <img
-        src="/src/lib/assets/pine-footer.png"
-        alt="Pine Background"
-        class="pine-bg"
-    />
-    
+    <img src={pineImg} alt="Pine Background" class="pine-bg" />
 </section>
-
 
 <style>
     /* CSS Section 1 - hero section */
@@ -72,7 +82,7 @@
         width: 100%;
         max-width: 100vw;
         min-height: 350px;
-        background-image: url("src/lib/assets/mountain-back.svg");
+        background-image: url("/src/lib/assets/mountain-back.svg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -132,9 +142,7 @@
         align-self: flex-end;
         transition: width 0.3s ease;
     }
-    
-   
-    
+
     @media (max-width: 768px) {
         .hero-flex {
             flex-direction: column;
@@ -147,7 +155,7 @@
         }
         .hero-content {
             flex: 0 0 auto;
-           
+
             width: 100%;
             margin: 1rem 0 1rem 0;
             padding-right: 0;
@@ -180,7 +188,7 @@
         }
         .hero-image-wrapper img {
             width: clamp(140px, 70vw, 400px);
-            
+
             margin: 0 0 -4rem 0;
         }
     }
@@ -194,7 +202,7 @@
     }
 
     /* CSS Section 2 - data section */
-    
+
     .vulnerable-tag {
         position: absolute;
         right: 10px;
@@ -206,7 +214,7 @@
         border-radius: 9999px;
         font-weight: bold;
         font-size: 1.1rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         animation: vibrate 1.2s infinite;
         width: auto;
         min-width: unset;
@@ -215,12 +223,24 @@
         white-space: nowrap;
     }
     @keyframes vibrate {
-        0% { transform: translateY(-50%) translateX(0) rotate(0deg); }
-        20% { transform: translateY(-50%) translateX(-2px) rotate(-2deg); }
-        40% { transform: translateY(-50%) translateX(2px) rotate(2deg); }
-        60% { transform: translateY(-50%) translateX(-2px) rotate(-2deg); }
-        80% { transform: translateY(-50%) translateX(2px) rotate(2deg); }
-        100% { transform: translateY(-50%) translateX(0) rotate(0deg); }
+        0% {
+            transform: translateY(-50%) translateX(0) rotate(0deg);
+        }
+        20% {
+            transform: translateY(-50%) translateX(-2px) rotate(-2deg);
+        }
+        40% {
+            transform: translateY(-50%) translateX(2px) rotate(2deg);
+        }
+        60% {
+            transform: translateY(-50%) translateX(-2px) rotate(-2deg);
+        }
+        80% {
+            transform: translateY(-50%) translateX(2px) rotate(2deg);
+        }
+        100% {
+            transform: translateY(-50%) translateX(0) rotate(0deg);
+        }
     }
     .stats-container {
         display: grid;
@@ -250,8 +270,6 @@
         width: 16rem;
         height: auto;
         border-radius: 0.5rem;
-        
-
     }
 
     .vulnerable-tag {
@@ -264,11 +282,11 @@
         border-radius: 9999px;
         font-size: 0.875rem;
         font-weight: bold;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
         transform: rotate(6deg);
     }
-
-    
 
     @media (min-width: 768px) {
         .data-section {
@@ -286,10 +304,10 @@
             right: 6rem;
         }
         .stats-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem;
-        padding: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            padding: 1.5rem;
         }
     }
 
@@ -324,11 +342,9 @@
         width: 100vw;
         min-width: 100vw;
         max-width: 100vw;
-        
+
         object-fit: cover;
         z-index: 299;
         pointer-events: none;
     }
-    
-    
 </style>

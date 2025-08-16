@@ -13,6 +13,8 @@ const config = {
 			strict: true         // whether to fail if the build is not strict
 		}),
 		paths: {
+			
+			
 
 			base: process.env.NODE_ENV === 'production' ? '/panthera-uncia' : '',
 		}
