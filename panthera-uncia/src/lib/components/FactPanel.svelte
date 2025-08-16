@@ -2,25 +2,21 @@
     import pawsImg from "$lib/assets/paws.png";
     import planetImg from "$lib/assets/planet.png";
 
-    export let facts = [];
+    let { facts } = $props();
 
-    let currentFactIndex = 0;
-    let viewedFacts = new Set();
+    let currentFactIndex = $state(0);
+    let viewedFacts = $state([]);
 
-    $: currentFact = facts.length === 0 ? null : facts[currentFactIndex];
+    let currentFact = $derived(facts.length === 0 ? null : facts[currentFactIndex]);
 
-    // if all facts have been viewed
-    $: allFactsViewed = viewedFacts.size === facts.length && facts.length > 0;
-    // true if there is a previous fact to show
-    $: showPrev = currentFactIndex > 0;
-    // true if there is a next fact to show
-    $: showNext = currentFactIndex < facts.length - 1;
-
-    // Move to the next/prev fact and Adds the fact to the set of viewed facts.
+    let allFactsViewed = $derived(viewedFacts.length === facts.length && facts.length > 0);
+    let showPrev = $derived(currentFactIndex > 0);
+    let showNext = $derived(currentFactIndex < facts.length - 1);
 
     function nextFact() {
         if (showNext) {
             currentFactIndex++;
+            // El easter egg solo aparece en el primer fact, nunca más
             showEasterEgg = false;
         }
     }
@@ -28,23 +24,26 @@
     function prevFact() {
         if (showPrev) {
             currentFactIndex--;
+            // El easter egg solo aparece en el primer fact, nunca más
+            showEasterEgg = false;
         }
     }
 
-    // When currentFact changes, mark it as viewed and update document title
-    $: {
+    $effect(() => {
         if (currentFact && currentFact.id !== undefined) {
-            viewedFacts.add(currentFact.id);
+            if (!viewedFacts.includes(currentFact.id)) {
+                viewedFacts = [...viewedFacts, currentFact.id];
+            }
+            document.title = `Fact: ${currentFact.title}`;
         }
-        allFactsViewed = viewedFacts.size === facts.length && facts.length > 0;
-    }
+    });
 
-    // Easter egg logic
     import { onMount, onDestroy } from "svelte";
-    let showEasterEgg = false;
+    let showEasterEgg = $state(false);
     let easterEggTimer;
 
     function triggerEasterEgg() {
+        // Solo se llama al inicio, para el primer fact
         if (Math.random() < 0.6) {
             showEasterEgg = true;
         } else {
@@ -53,7 +52,10 @@
     }
 
     onMount(() => {
-        triggerEasterEgg();
+        // Solo mostrar el easter egg en el primer fact
+        if (currentFactIndex === 0) {
+            triggerEasterEgg();
+        }
     });
 
     onDestroy(() => {
@@ -73,7 +75,7 @@
         style="pointer-events: none; z-index: 0;"
     />
     <div class="fact-content">
-        <h3>{currentFact.title}</h3>
+        <h3>{currentFact?.title}</h3>
         <p>{currentFact.fact}</p>
 
         <!-- Message Easter egg *(60% chances)-->
@@ -90,10 +92,9 @@
         <div class="fact-navigation-controls">
             {#if showPrev}
                 <button
-                    on:click={prevFact}
+                    onclick={prevFact}
                     class="nav-button"
-                    aria-label="Previous fact">&#8592;</button
-                >
+                    aria-label="Previous fact">&#8592;</button>
             {/if}
 
             <div class="progress-dots">
@@ -106,18 +107,17 @@
 
             {#if showNext}
                 <button
-                    on:click={nextFact}
+                    onclick={nextFact}
                     class="nav-button"
-                    aria-label="Next fact">&#8594;</button
-                >
+                    aria-label="Next fact">&#8594;</button>
             {/if}
         </div>
     </div>
 
     {#if allFactsViewed}
-        <div class="interactive-button-wrapper">
-            <a href="/meetup" class="interactive-button">
-                <img src={planetImg} alt="Little planet" class="planet-icon" />
+        <div class="interactive-button-wrapper" style="overflow:visible;">
+            <a href="/meetup" class="interactive-button" style="overflow:visible;">
+                <img src={planetImg} alt="Little planet" class="planet-icon" style="display:inline-block;" />
                 Meet with Panthera Uncia!
             </a>
         </div>
@@ -278,11 +278,13 @@
     }
 
     .planet-icon {
-        position: absolute;
-        left: -1.5rem; /* -left-6 */
+        /* Remove absolute positioning for proper inline alignment */
         width: 2.5rem; /* w-10 */
         height: 2.5rem; /* h-10 */
+        margin-right: 0.7rem;
         animation: vibrate 1.5s infinite; /* animate-pulse-slow custom animation */
+        vertical-align: middle;
+        position: static;
     }
 
     @keyframes vibrate {
