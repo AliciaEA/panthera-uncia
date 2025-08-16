@@ -7,7 +7,7 @@
     import fightLeopardImg from "$lib/assets/fight-leopard.png";
    import pineImg from "$lib/assets/pine-footer.png";
 
-    let snowPileClicked = false;
+    let snowPileClicked = $state(false);
     let dialogueClickedIndex = 0;
     let dialogueNotClickedIndex = 0;
 
@@ -28,9 +28,14 @@
         "Are you up for discovering it?",
     ];
 
-    let cubDialogue = dialoguesNotClicked[0];
+    let cubDialogue = $state(dialoguesNotClicked[0]);
 
-    let showStars = false;
+    // Svelte 5 $effect rune: update document title when cubDialogue changes
+    $effect(() => {
+        document.title = `Panthera Uncia: ${cubDialogue}`;
+    });
+
+    let showStars = $state(false);
 
     function revealCub() {
         if (!snowPileClicked) {
@@ -71,8 +76,8 @@
         class="interactive-section"
         role="button"
         tabindex="0"
-        on:click={handleSectionClick}
-        on:keydown={(e) => {
+    onclick={handleSectionClick}
+        onkeydown={(e) => {
             if (e.key === "Enter" || e.key === " ") handleSectionClick(e);
         }}
     >
@@ -89,7 +94,7 @@
             <button
                 type="button"
                 class="snow-pile-btn"
-                on:click={revealCub}
+                onclick={revealCub}
                 aria-label="Descubrir panterita"
             >
                 <img src={snowPileImg} alt="Snow pile" class="snow-pile" />
@@ -102,7 +107,7 @@
                     <button
                         type="button"
                         class="found-panther-btn"
-                        on:click={foundPantherClick}
+                        onclick={foundPantherClick}
                         aria-label="Interact with panther cub"
                         style="background:none;border:none;padding:0;position:relative;cursor:pointer;"
                     >
