@@ -1,5 +1,6 @@
 <script>
     import Snow from "$lib/components/snow.svelte";
+    import { base } from '$app/paths';
 
     import snowPileImg from "$lib/assets/snow-pile.png";
     import foundPantherImg from "$lib/assets/found-panth.png";
@@ -135,8 +136,11 @@
                 </div>
             {/if}
         </div>
+        <script>
+            import { base } from '$app/paths';
+        </script>
         <div class="back-arrow-wrapper">
-            <a href="/" class="back-arrow" aria-label="Return to main page">
+            <a href={base + "/"} class="back-arrow" aria-label="Return to main page">
                 <svg
                     width="54"
                     height="54"
@@ -224,7 +228,7 @@
     }
     .interactive-section {
         min-height: 100vh;
-        background: url("/src/lib/assets/interactive-snow-floor.svg") center center / cover
+        background: url("/panthera-uncia/src/lib/assets/interactive-snow-floor.svg") center center / cover
             no-repeat;
         color: white;
         display: flex;

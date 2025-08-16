@@ -1,16 +1,15 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
 
 		adapter: adapter({
-
-			pages: 'build',      // directory where pages will be outputted
-			assets: 'build',     // directory where assets will be outputted
-			fallback: undefined, // for single-page applications, specifies a fallback page
-			precompress: false,  // whether to compress files
-			strict: true         // whether to fail if the build is not strict
+			pages: 'output',      // directory where pages will be outputted
+			assets: 'output',     // directory where assets will be outputted
+			fallback: undefined,
+			precompress: false,
+			strict: true
 		}),
 		paths: {
 			

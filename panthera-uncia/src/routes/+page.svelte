@@ -82,7 +82,7 @@
         width: 100%;
         max-width: 100vw;
         min-height: 350px;
-        background-image: url("/src/lib/assets/mountain-back.svg");
+        background-image: url("/panthera-uncia/src/lib/assets/mountain-back.svg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

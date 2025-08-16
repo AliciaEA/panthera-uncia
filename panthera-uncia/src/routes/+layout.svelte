@@ -1,7 +1,7 @@
 <script>
     import ZooBanner from "$lib/components/ZooBanner.svelte";
     import "../app.css";
-    import favicon from "$lib/assets/favicon.svg";
+   
     import Snow from "$lib/components/snow.svelte";
     import github from "$lib/assets/github-logo.png";
     import theZooLogo from "$lib/assets/the-zoo-logo.png";
@@ -12,7 +12,7 @@
 
 <!-- Requirement svelte:head -->
 <svelte:head>
-    <link rel="icon" href={favicon} />
+    <link rel="icon" href="/panthera-uncia/favicon.svg"  />
 </svelte:head>
 
 <!-- Requirement: Add The ZooBanner component -->
