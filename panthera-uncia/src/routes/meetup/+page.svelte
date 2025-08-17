@@ -137,7 +137,7 @@
             {/if}
         </div>
         <script>
-            import { base } from '$app/paths';
+            
         </script>
         <div class="back-arrow-wrapper">
             <a href={base + "/"} class="back-arrow" aria-label="Return to main page">
@@ -228,7 +228,7 @@
     }
     .interactive-section {
         min-height: 100vh;
-        background: url("/panthera-uncia/src/lib/assets/interactive-snow-floor.svg") center center / cover
+        background: url("/src/lib/assets/interactive-snow-floor.svg") center center / cover
             no-repeat;
         color: white;
         display: flex;

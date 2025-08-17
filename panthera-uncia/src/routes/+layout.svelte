@@ -5,6 +5,7 @@
     import Snow from "$lib/components/snow.svelte";
     import github from "$lib/assets/github-logo.png";
     import theZooLogo from "$lib/assets/the-zoo-logo.png";
+     import { base } from '$app/paths';
     import hackclubLogo from "$lib/assets/hackclub-footer.png";
 
     let { children } = $props();
@@ -12,7 +13,7 @@
 
 <!-- Requirement svelte:head -->
 <svelte:head>
-    <link rel="icon" href="/panthera-uncia/favicon.svg"  />
+    <link rel="icon" href={base + "/favicon.svg"}  />
 </svelte:head>
 
 <!-- Requirement: Add The ZooBanner component -->

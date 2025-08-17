@@ -1,6 +1,7 @@
 <script>
     import pawsImg from "$lib/assets/paws.png";
     import planetImg from "$lib/assets/planet.png";
+     import { base } from '$app/paths';
 
     let { facts } = $props();
 
@@ -116,7 +117,7 @@
 
     {#if allFactsViewed}
         <div class="interactive-button-wrapper" style="overflow:visible;">
-            <a href="/panthera-uncia/meetup" class="interactive-button" style="overflow:visible;">
+            <a href={base + "/meetup"} class="interactive-button" style="overflow:visible;">
                 <img src={planetImg} alt="Little planet" class="planet-icon" style="display:inline-block;" />
                 Meet with Panthera Uncia!
             </a>

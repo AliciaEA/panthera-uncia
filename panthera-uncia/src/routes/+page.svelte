@@ -3,7 +3,9 @@
     import factsData from "$lib/data/facts.json";
     import pantheraImg from "$lib/assets/main-panthuncia.png";
     import vulnerablePant from "$lib/assets/vulnerable-panthuncia.png";
- 
+  import { base } from '$app/paths';
+  import mountainBack from "$lib/assets/mountain-back.svg";
+
     import pineImg from "$lib/assets/pine-footer.png";
     import DataCard from "$lib/components/DataCard.svelte";
     import Snow from "$lib/components/snow.svelte";
@@ -15,7 +17,7 @@
 <!-- Presentation of the website -->
 <section class="hero-section">
     <div class="hero-overlay"></div>
-    <div class="hero-flex">
+    <div class="hero-flex" style={`background-image: url('${mountainBack}');`}>
         <div class="hero-content">
             <h1>Panthera Uncia</h1>
             <p>The ghost of the mountains on the edge of survival</p>
@@ -82,7 +84,7 @@
         width: 100%;
         max-width: 100vw;
         min-height: 350px;
-        background-image: url("/panthera-uncia/src/lib/assets/mountain-back.svg");
+        
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
