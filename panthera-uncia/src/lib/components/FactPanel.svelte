@@ -128,14 +128,14 @@
 <style>
     .fact-panel-container {
         position: relative;
-        background-color: rgb(232, 236, 240); /* bg-gray-100 */
+        background-color: rgb(232, 236, 240); 
         padding: 2rem;
-        border-radius: 0.5rem; /* rounded-lg */
+        border-radius: 0.5rem; 
         box-shadow:
             0 24px 48px -8px rgba(0, 0, 0, 0.32),
-            0 12px 36px -8px rgba(0, 0, 0, 0.28); /* shadow-xl even stronger */
-        max-width: 48rem; /* max-w-2xl */
-        margin: 4rem auto 0 auto; /* mt-16 mx-auto */
+            0 12px 36px -8px rgba(0, 0, 0, 0.28);
+        max-width: 48rem; 
+        margin: 4rem auto 0 auto; 
         z-index: 10;
         display: flex;
         flex-direction: column;
@@ -145,14 +145,14 @@
 
     .paws-decoration {
         position: absolute;
-        bottom: 1rem; /* bottom-4 */
-        left: 1rem; /* left-4 */
-        width: 7.5rem; /* w-30, bigger paws */
+        bottom: 1rem; 
+        left: 1rem; 
+        width: 7.5rem; 
         height: auto;
         opacity: 0.7;
     }
     .fact-content {
-        margin-top: 7rem; /* mt-28 */
+        margin-top: 7rem; 
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -161,16 +161,16 @@
     }
 
     .fact-content h3 {
-        font-size: 1.5rem; /* text-2xl */
+        font-size: 1.5rem; 
         font-weight: bold;
-        color: #1f2937; /* text-gray-800 */
+        color: #1f2937;
         margin-bottom: 1rem;
     }
 
     .fact-content p {
-        font-size: 1.125rem; /* text-lg */
-        color: #374151; /* text-gray-700 */
-        line-height: 1.625; /* leading-relaxed */
+        font-size: 1.125rem; 
+        color: #374151; 
+        line-height: 1.625; 
         display: flex;
         align-items: center;
         justify-content: center;
@@ -181,21 +181,21 @@
         top: 3.5rem;
         left: 50%;
         transform: translateX(-50%);
-        background-color: #fcd34d; /* bg-yellow-300 */
-        color: #92400e; /* text-yellow-900 */
+        background-color: #fcd34d; 
+        color: #92400e; 
         padding: 10px 0;
-        border-radius: 9999px; /* rounded-full */
-        font-size: 0.875rem; /* text-sm */
-        font-weight: 600; /* font-semibold */
+        border-radius: 9999px; 
+        font-size: 0.875rem;
+        font-weight: 600; 
         box-shadow:
             0 4px 6px -1px rgba(0, 0, 0, 0.1),
-            0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            0 2px 4px -1px rgba(0, 0, 0, 0.06); 
         animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         z-index: 101;
     }
     .easter-egg p {
         margin: 0;
-        padding: 0 1rem; /* px-4 */
+        padding: 0 1rem; 
         text-align: center;
     }
 
@@ -213,15 +213,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 1.5rem; /* mt-6 */
-        gap: 1rem; /* space-x-4 */
+        margin-top: 1.5rem; 
+        gap: 1rem; 
         width: 100%;
     }
 
     .nav-button {
         padding: 0.5rem;
-        border-radius: 9999px; /* rounded-full */
-        background-color: #3e6d6d; /* bg-blue-500 */
+        border-radius: 9999px; 
+        background-color: #3e6d6d; 
         color: white;
         border: none;
         cursor: pointer;
@@ -233,20 +233,20 @@
 
     .progress-dots {
         display: flex;
-        gap: 0.5rem; /* space-x-2 */
+        gap: 0.5rem; 
         justify-content: center;
         align-items: center;
     }
 
     .dot {
-        width: 0.75rem; /* w-3 */
-        height: 0.75rem; /* h-3 */
-        border-radius: 9999px; /* rounded-full */
-        background-color: #d1d5db; /* bg-gray-300 */
+        width: 0.75rem; 
+        height: 0.75rem; 
+        border-radius: 9999px; 
+        background-color: #d1d5db; 
     }
 
     .dot.active {
-        background-color: #506777; /* bg-blue-500 */
+        background-color: #506777;
     }
 
     .interactive-button-wrapper {
@@ -259,31 +259,31 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0.75rem 2rem; /* px-8 py-3 */
+        padding: 0.75rem 2rem; 
         font-weight: bold;
         color: white;
         background-color: rgb(121, 156, 134);
-        border-radius: 9999px; /* rounded-full */
+        border-radius: 9999px; 
         box-shadow:
             0 24px 48px -8px rgba(0, 0, 0, 0.32),
-            0 12px 36px -8px rgba(0, 0, 0, 0.28); /* shadow-lg even stronger */
+            0 12px 36px -8px rgba(0, 0, 0, 0.28); 
         transition:
             background-color 0.15s ease-in-out,
             transform 0.15s ease-in-out;
     }
 
     .interactive-button:hover {
-        background-color: #4c6656; /* hover:bg-green-700 */
+        background-color: #4c6656; 
         transform: scale(1.05); /* hover:scale-105 */
         text-decoration: none;
     }
 
     .planet-icon {
-        /* Remove absolute positioning for proper inline alignment */
-        width: 2.5rem; /* w-10 */
-        height: 2.5rem; /* h-10 */
+        
+        width: 2.5rem; 
+        height: 2.5rem; 
         margin-right: 0.7rem;
-        animation: vibrate 1.5s infinite; /* animate-pulse-slow custom animation */
+        animation: vibrate 1.5s infinite;
         vertical-align: middle;
         position: static;
     }

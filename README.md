@@ -1,5 +1,6 @@
 
 # Panthera-Uncia: The Snow Leopard Interactive Zoo Exhibit
+DEPLOYED HERE: https://aliciaea.github.io/panthera-uncia/
 
 Welcome to Panthera-Uncia, a SvelteKit project for YSWS Hack Club, The Zoo! We have our snow leopard (Panthera uncia - I called him Panthuncia), facts about them, some "animations"(I tried), and *responsive*, doesn't look bad on mobile, I really tried my best. Explore, learn, and interact with the snow leopard [Pantuncia].
 
