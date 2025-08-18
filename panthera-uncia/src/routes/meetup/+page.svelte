@@ -42,6 +42,9 @@
         if (!snowPileClicked) {
             snowPileClicked = true;
             cubDialogue = dialoguesClicked[0];
+            foundPantherActive = true;
+            foundPantherDialogueIndex = 0;
+            foundPantherDialogue = foundPantherDialogues[0];
         }
     }
 
@@ -59,24 +62,16 @@
 
     function foundPantherClick() {
         if (snowPileClicked) {
-            foundPantherActive = true;
             if (dialogueClickedIndex < dialoguesClicked.length - 1) {
                 dialogueClickedIndex++;
             } else {
                 dialogueClickedIndex = 0;
             }
             cubDialogue = dialoguesClicked[dialogueClickedIndex];
-            // Reset found panther dialogue sequence
-        // Start dialogue sequence as soon as found panthera appears
-        let foundPantherActive = $state(false);
-            foundPantherDialogue = foundPantherDialogues[0];
             showStars = true;
             setTimeout(() => (showStars = false), 900);
         }
     }
-                foundPantherActive = true; // Activate found panther dialogue immediately
-                foundPantherDialogueIndex = 0;
-                foundPantherDialogue = foundPantherDialogues[0];
 
     // Internal stimulus: sequence of found panthera dialogues every 2s
     let pantheraTimer;
