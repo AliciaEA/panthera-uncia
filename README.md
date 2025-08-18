@@ -1,6 +1,7 @@
 
 # Panthera-Uncia: The Snow Leopard Interactive Zoo Exhibit
 DEPLOYED HERE: https://aliciaea.github.io/panthera-uncia/
+Hackatime: https://hackatime-badge.hackclub.com/U091QQE2X26/panthera-uncia
 
 Welcome to Panthera-Uncia, a SvelteKit project for YSWS Hack Club, The Zoo! We have our snow leopard (Panthera uncia - I called him Panthuncia), facts about them, some "animations"(I tried), and *responsive*, doesn't look bad on mobile, I really tried my best. Explore, learn, and interact with the snow leopard [Pantuncia].
 
@@ -16,7 +17,39 @@ Panthera-Uncia is all about celebrating the snow leopard. Here’s what you’ll
 
 ---
 
-## Interactive Features (How I Earned My Mynts!)
+
+
+## Stimuli: External & Internal (Required for YSWS)
+
+
+### Main Page (`/`)
+#### External Stimuli
+- **Clicking the snowflake button:** Triggers the snowstorm animation.
+- **Navigating facts panel:** Previous/next buttons change facts and progress.
+- **Animated Data Cards:** Stats about snow leopards count up when they enter view (scroll/counter effect).
+- **Hovering on Data Cards:** Cards bounce slightly when hovered.
+
+
+#### Internal Stimuli
+- **Random chance (easter egg):** When viewing facts, there is a 60% chance for a secret message to appear, even if the user does nothing special.
+- **Title change effect:** The browser tab title updates automatically whenever the facts changes
+- **Planet icon:** The planet vibrates with a CSS animation.
+- **Vulnerable tag:** The tag vibrates to highlight conservation status.
+
+### Meetup Page (`/meetup`) - INTERACTIVE PAGE
+#### External Stimuli
+- **Clicking the snow pile:** Reveals the hidden panthera cub and starts the interactive scene.
+- **Clicking the found panthera cub:** Changes its dialogue and triggers a star animation.
+- **Clicking anywhere else in the scene (when snow hasn't been clicked):** Changes the dialogue in a different way, encouraging exploration.
+- **Hovering on the back arrow:** The arrow grows in size for visual feedback.
+
+#### Internal Stimuli
+- **Timed dialogue sequence (found panthera):** As soon as the cub is revealed, a special dialogue above the found panthera changes automatically every 2 seconds, cycling through a set of friendly messages. This happens without user interaction.
+- **Title change effect:** The browser tab title updates automatically whenever the cub's dialogue changes, reflecting the current state.
+
+---
+
+## Interactive Features 
 
 ### 1. Snow Effect Button ❄️
 - **What:** A floating snowflake button in the corner. Click it and watch a magical snowstorm sweep across the screen for a few seconds. Keyboard and screen reader friendly!

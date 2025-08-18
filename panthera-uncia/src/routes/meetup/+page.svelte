@@ -45,18 +45,52 @@
         }
     }
 
+    // Custom sequence for found panthera
+    let foundPantherDialogues = [
+        "Oh, you found me!",
+        "I'm so happy!",
+        "Let's play together!",
+        "Can you pet me again?",
+        "You're my friend now!"
+    ];
+    let foundPantherDialogueIndex = 0;
+    let foundPantherDialogue = $state(foundPantherDialogues[0]);
+    let foundPantherActive = $state(false);
+
     function foundPantherClick() {
         if (snowPileClicked) {
+            foundPantherActive = true;
             if (dialogueClickedIndex < dialoguesClicked.length - 1) {
                 dialogueClickedIndex++;
             } else {
                 dialogueClickedIndex = 0;
             }
             cubDialogue = dialoguesClicked[dialogueClickedIndex];
+            // Reset found panther dialogue sequence
+        // Start dialogue sequence as soon as found panthera appears
+        let foundPantherActive = $state(false);
+            foundPantherDialogue = foundPantherDialogues[0];
             showStars = true;
             setTimeout(() => (showStars = false), 900);
         }
     }
+                foundPantherActive = true; // Activate found panther dialogue immediately
+                foundPantherDialogueIndex = 0;
+                foundPantherDialogue = foundPantherDialogues[0];
+
+    // Internal stimulus: sequence of found panthera dialogues every 2s
+    let pantheraTimer;
+    $effect(() => {
+        if (foundPantherActive) {
+            pantheraTimer = setInterval(() => {
+                foundPantherDialogueIndex = (foundPantherDialogueIndex + 1) % foundPantherDialogues.length;
+                foundPantherDialogue = foundPantherDialogues[foundPantherDialogueIndex];
+            }, 2000);
+        } else {
+            clearInterval(pantheraTimer);
+        }
+        return () => clearInterval(pantheraTimer);
+    });
 
     // Interactive > if you dont click the snow, dialogue changes
     function handleSectionClick(event) {
@@ -77,7 +111,7 @@
         class="interactive-section"
         role="button"
         tabindex="0"
-    onclick={handleSectionClick}
+        onclick={handleSectionClick}
         onkeydown={(e) => {
             if (e.key === "Enter" || e.key === " ") handleSectionClick(e);
         }}
@@ -118,7 +152,13 @@
                             id="found-panther"
                             style="pointer-events:auto;"
                         />
-
+                        <!-- Internal stimulus: found panthera dialogue -->
+                        <div
+                            class="found-panther-dialogue"
+                            style="position:absolute;top:-100px;left:70%;transform:translateX(-50%);background:rgba(255,255,255,0.95);color:#333;padding:0.5rem 1rem;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.12);font-size:1rem;white-space:nowrap;"
+                        >
+                            {foundPantherDialogue}
+                        </div>
                         <!-- Interactive Effect: Shows stars when petting Panthuncia -->
                         {#if showStars}
                             <span
@@ -137,10 +177,13 @@
             {/if}
         </div>
         <script>
-            
         </script>
         <div class="back-arrow-wrapper">
-            <a href={base + "/"} class="back-arrow" aria-label="Return to main page">
+            <a
+                href={base + "/"}
+                class="back-arrow"
+                aria-label="Return to main page"
+            >
                 <svg
                     width="54"
                     height="54"
@@ -228,8 +271,8 @@
     }
     .interactive-section {
         min-height: 100vh;
-        background: url("/src/lib/assets/interactive-snow-floor.svg") center center / cover
-            no-repeat;
+        background: url("/src/lib/assets/interactive-snow-floor.svg") center
+            center / cover no-repeat;
         color: white;
         display: flex;
         flex-direction: column;
